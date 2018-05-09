@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-header card-header-primary">
+              <h4 class="card-title ">Tareas</h4>
+              <p>Tareas activas</p>
+          </div>
+          <div class="card-body">
+                <a class="btn btn-success pull-right" routerLink="/tasks/create/{{user_story_id}}">Crear Tarea</a>
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead class=" text-primary">
+                          <th>
+                              ID
+                          </th>
+                          <th>
+                              Duración
+                          </th>
+                          <th>
+                              Nombre
+                          </th>
+                          <th>
+                              Completado
+                          </th>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let task of tasks">
+                              <td>
+                                  {{task.id}}
+                              </td>
+                              <td>
+                                  {{task.duration}}
+                              </td>
+                              <td>
+                                  {{task.name}}
+                              </td>
+                              <td *ngIf="task.completed==true">
+                                  Sí
+                              </td>
+                              <td *ngIf="task.completed==false">
+                                  No
+                               </td>
+                              <td>
+                                    <button class="btn btn-danger pull-right" (click)="deleteTask(task.id)"><i class="material-icons">delete</i></button>
+                                    <button class="btn btn-info pull-right" routerLink="/tasks/update/{{task.id}}"><i class="material-icons" >edit</i></button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

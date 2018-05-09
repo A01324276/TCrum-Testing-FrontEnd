@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title ">Miembros</h4>
+        <p class="card-category">Miembros del proyecto</p>
+      </div>
+      <div class="card-body">
+        <div class="col-md-12">
+          <form (submit)="addUser()">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating" for="user_id">Miembro</label>
+                  <select class="form-control" id="user_id" name="user_id" [(ngModel)]="user_id">
+                    <option *ngFor="let user of users" value="{{user.id}}">{{user.id}} || {{user.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="bmd-label-floating" for="project_role">Rol en el proyecto</label>
+                  <select class="form-control" id="project_role" name="project_role" [(ngModel)]="project_role">
+                    <option *ngFor="let project_role of project_roles" value="{{project_role}}">{{project_role}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-success">Agregar miembro</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Rol en el proyecto</th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of projectUsers">
+                <td class="text-primary">{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.User_projects.project_role}}</td>
+                <td>
+                  <!-- <button class="btn btn-danger pull-right text-white text-center" (click)="deleteUser(user.id)">
+                    <i class="material-icons">delete</i>
+                  </button> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
